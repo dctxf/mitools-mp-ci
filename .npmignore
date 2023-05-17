@@ -12,3 +12,17 @@ docs
 .commitlint.config
 examples
 .vscode
+ci
+.editorconfig
+.gitignore
+.gitattributes
+.npmrc
+.travis.yml
+CHANGELOG.md
+LICENSE
+README.md
+index.ts
+.prettierignore
+.prettierrc.js
+pnpm-lock.yaml
+tsconfig.json
