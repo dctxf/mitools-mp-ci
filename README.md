@@ -19,8 +19,16 @@ pnpm i mitools-mp-ci
 "ci": {
   "weapp": {
     "appid": "xxx",
+    // 默认值 ./private.${config.appid}.key
     "privateKeyPath": "./config/private.key",
+    // 默认值 ./dist/weapp
     "projectPath": "./dist/weapp"
   }
 }
+```
+
+## 脚本
+
+```
+ci
 ```

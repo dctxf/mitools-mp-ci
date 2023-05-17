@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "module": "ES2020",
+    "module": "ESNext",
     "target": "es5",
     "allowJs": true,
     "typeRoots": ["typings"],
@@ -10,9 +10,10 @@
     "baseUrl": ".",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "resolveJsonModule": true
   },
-  "include": ["index.ts"],
+  "include": ["index.ts","bin/ci.ts"],
   "exclude": ["node_modules"],
   "ts-node": {
     "esm": true,

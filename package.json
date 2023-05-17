@@ -4,6 +4,9 @@
   "description": "小程序自动上传工具",
   "main": "./lib/index.js",
   "type": "module",
+  "bin": {
+    "ci":"./lib/index.js"
+  },
   "scripts": {
     "pub": "np --no-tests --no-cleanup --no-yarn"
   },
@@ -17,6 +20,7 @@
   },
   "dependencies": {
     "child_process": "^1.0.2",
+    "commander": "^10.0.1",
     "inquirer": "^9.2.3",
     "miniprogram-ci": "^1.9.5",
     "read-pkg": "^8.0.0",
