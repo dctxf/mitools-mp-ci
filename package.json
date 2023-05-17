@@ -1,11 +1,11 @@
 {
   "name": "mitools-mp-ci",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "小程序自动上传工具",
   "main": "./lib/index.js",
   "type": "module",
   "bin": {
-    "ci":"./lib/index.js"
+    "ci": "./lib/index.js"
   },
   "scripts": {
     "pub": "np --no-tests --no-cleanup --no-yarn"
