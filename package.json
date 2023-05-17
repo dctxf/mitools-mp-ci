@@ -5,7 +5,7 @@
   "main": "./lib/index.js",
   "type": "module",
   "scripts": {
-    "pub": "np --no-tests"
+    "pub": "np --no-tests --no-cleanup --no-yarn"
   },
   "keywords": [],
   "author": "",
