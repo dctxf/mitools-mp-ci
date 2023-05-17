@@ -23,6 +23,7 @@
     "commander": "^10.0.1",
     "inquirer": "^9.2.3",
     "miniprogram-ci": "^1.9.5",
+    "mitools-mp-ci": "link:",
     "read-pkg": "^8.0.0",
     "semver": "^7.5.1"
   },
