@@ -1,18 +1,10 @@
 #!/usr/bin/env node
 import { execSync } from 'child_process';
-import { Command } from 'commander';
 import inquirer from 'inquirer';
-import path from 'path';
 import { readPackageSync } from 'read-pkg';
 import semver from 'semver';
 import inc from 'semver/functions/inc.js';
-import { fileURLToPath } from 'url';
-import { mpUpload } from './ci/weapp.js';
-import pkg from "./package.json" assert { type: "json" };
-const program = new Command();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 const prompt = inquirer.createPromptModule();
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -28,12 +20,41 @@ if (!packageVersion) {
 }
 
 
-program
-  .name('ci')
-  .description('mitools-mp-ci 是一个小程序自动发布工具')
-  .version(pkg.version).parse()
+export type WeappConfig = {
+  appid: string;
+  privateKeyPath?: string;
+  projectPath?: string;
+  version: string;
+  desc: string;
+};
 
-const options = program.opts();
+export async function mpUpload (config: WeappConfig) {
+  const project = new ci.Project({
+    appid: config.appid,
+    type: 'miniProgram',
+    projectPath: config.projectPath || './dist/weapp',
+    privateKeyPath: config.privateKeyPath || `./private.${config.appid}.key`,
+    ignores: ['node_modules/**/*'],
+  });
+
+  if (!isDev) {
+    await ci.upload({
+      project,
+      version: config.version,
+      desc: config.desc,
+      setting: {
+        es6: true,
+        minify: true,
+      },
+      robot: 1,
+      onProgressUpdate: console.log,
+    });
+  }
+  console.log('---- 代码部署完毕，请到小程序后台进行后续操作 ----');
+  console.log('https://mp.weixin.qq.com/');
+  console.log('-----  End  -----');
+}
+
 
 prompt([
   {
