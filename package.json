@@ -8,7 +8,7 @@
     "ci": "./lib/index.js"
   },
   "scripts": {
-    "pub": "np --no-tests --no-cleanup --no-yarn",
+    "pub": "tsc && np --no-tests --no-cleanup --no-yarn",
     "b": "ci"
   },
   "keywords": [],
