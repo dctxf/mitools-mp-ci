@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { execSync } from 'child_process';
 import inquirer from 'inquirer';
+import minici from 'miniprogram-ci';
 import { readPackageSync } from 'read-pkg';
 import semver from 'semver';
 import inc from 'semver/functions/inc.js';
@@ -29,7 +30,7 @@ export type WeappConfig = {
 };
 
 export async function mpUpload (config: WeappConfig) {
-  const project = new ci.Project({
+  const project = new minici.Project({
     appid: config.appid,
     type: 'miniProgram',
     projectPath: config.projectPath || './dist/weapp',
@@ -38,7 +39,7 @@ export async function mpUpload (config: WeappConfig) {
   });
 
   if (!isDev) {
-    await ci.upload({
+    await minici.upload({
       project,
       version: config.version,
       desc: config.desc,
